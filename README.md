@@ -1,7 +1,7 @@
 # Django + Docker Boilerplate
-After having to initiate multiple Django projects (all having more or less the same setup) I decided to create this boilerplate with the most common setup that I use for my projects.
+After having to initiate multiple Django projects (all having more or less the same setup) I decided to create this boilerplate with the most common setup and services that I use for my projects.
 
-So this is a dockerized project that is orchestrated by docker-compose that also includes some extra services such as Postgres and Redis.
+So this is a complete dockerized project that is orchestrated by docker-compose that also includes some extra services such as Postgres and Redis and can be used as a base for many use cases.
 
 I hope other people find it useful as well. If you do feel free to contribute.
 
