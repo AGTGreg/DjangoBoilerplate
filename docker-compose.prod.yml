@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - db_volume:/var/lib/postgresql/data/
+    env_file:
+      - prod.env
+    logging:
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+  redis_pr:
+    image: "redis:6-alpine"
+    restart: unless-stopped
+    expose:
+      - "6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_pr_data:/data
+    logging:
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+  app:
+    build:
+      context: ./app
+    restart: unless-stopped
+    volumes:
+      - ./app/:/app
+      - app_volume:/vol/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - prod.env
+    depends_on:
+      - db
+      - redis_pr
+    logging:
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+volumes:
+  db_volume:
+  app_volume:
+  redis_pr_data:

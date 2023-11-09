@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - db_volume:/var/lib/postgresql/data/
+    env_file:
+      - dev.env
+
+  redis_pr:
+    image: "redis:6-alpine"
+    expose:
+      - "6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_pr_data:/data
+
+  app:
+    build:
+      context: ./app
+    volumes:
+      - ./app/:/app
+      - app_volume:/vol/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - dev.env
+    depends_on:
+      - db
+      - redis_pr
+
+volumes:
+  db_volume:
+  app_volume:
+  redis_pr_data:
