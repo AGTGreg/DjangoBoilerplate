@@ -49,8 +49,20 @@ You can create an admin user with other credentials like so:
 docker exec -it <CONTAINER ID> ./manage.py initapp --username=admin --password=mysuperstrongpassword
 ```
 
-# Runing in production:
-Use the `docker-compose.prod.yml` instead:
+# Running in production:
+## Configure the webserver
+Execute the script that will install dummy certificates so that ngix can start:
+```bash
+chmod +x webserver/scripts/init-letsencrypt.sh
+sudo ./webserver/scripts/init-letsencrypt.sh
+```
+
+## Building the container
+Use the `docker-compose.prod.yml` instead and follow the instructions of step "3. Initialize the app":
 ```bash
 $ docker-compose -f docker-compose.prod.yml up --build
 ```
+
+# Special thanks
+I would like to thank:
+- [Philipp](https://github.com/wmnnd) For the `init-letsencrypt` script and for his awesome instructions on setting up nginx and certbot.
