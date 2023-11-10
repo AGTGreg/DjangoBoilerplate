@@ -16,11 +16,22 @@ I hope other people find it useful as well. If you do feel free to contribute.
     -   Redis
 
 ## Initial setup
-### 1. Setup the environment variables
+### 1. Create a new project with coockiecutter
+Install cookiecutter:
+```bash
+pip install cookiecutter
+```
+Then start the project:
+```bash
+cookiecutter https://github.com/AGTGreg/DjangoBoilerplate/tree/coockiecutter
+```
+You will be prompted to answer some questions to customize the project.
+
+### 2. Setup the environment variables
 The environment variables are in `dev.env` that is used by docker-compose.yml and `prod.env` that is used by `docker-compose.prod.yml`.
 Make sure to edit them and change at least the `POSTGRES_PASSWORD` and `DJANGO_SECRET_KEY`
 
-### 2. Build the containers
+### 3. Build the containers
 First you need to install Docker and Docker compose in your machine:
 [Install Docker](https://docs.docker.com/engine/install/)
 Then build the docker containers. Open your terminal and write:
@@ -29,7 +40,7 @@ $ docker-compose up --build
 ```
 This will run all the build scripts that create the necessary environment for the app to run. Nothing will be installed in your computer. Instead Docker will create containers that run Linux and install all the necessary libraries and dependencies and run the app in there.
 
-### 3. Initialize the app
+### 4. Initialize the app
 I have prepared a script called `initapp` that will initialize the app for you. To run it open a new terminal and type:
 ```bash
 $ docker ps
