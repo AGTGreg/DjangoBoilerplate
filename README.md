@@ -16,7 +16,7 @@ I hope other people find it useful as well. If you do feel free to contribute.
     -   Redis
 
 ## Initial setup
-### 1. Create a new project with coockiecutter
+### 1. Create a new project with cookiecutter
 Install cookiecutter:
 ```bash
 pip install cookiecutter
