@@ -69,7 +69,7 @@ sudo ./webserver/scripts/init-letsencrypt.sh
 ```
 
 ### Building the container
-Use the `docker-compose.prod.yml` instead and follow the instructions of step "3. Initialize the app":
+Use the `docker-compose.prod.yml` instead and follow the instructions of step "4. Initialize the app":
 ```bash
 $ docker-compose -f docker-compose.prod.yml up --build
 ```
