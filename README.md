@@ -23,7 +23,7 @@ pip install cookiecutter
 ```
 Then start the project:
 ```bash
-cookiecutter https://github.com/AGTGreg/DjangoBoilerplate/tree/coockiecutter
+cookiecutter https://github.com/AGTGreg/DjangoBoilerplate.git
 ```
 You will be prompted to answer some questions to customize the project.
 
