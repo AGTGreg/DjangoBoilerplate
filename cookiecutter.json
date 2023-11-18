@@ -2,7 +2,7 @@
     "project_name": "My project",
     "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
     "description": "{{ cookiecutter.project_name }} is awesome!",
-    "author_name": "Grigoris Chatzinikolaou",
+    "author": "Grigoris Chatzinikolaou",
     "domain_name": "example.com",
-    "email_address": "{{ cookiecutter.author_name.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.domain_name.lower() | trim() }}"
+    "email_address": "{{ cookiecutter.author.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.domain_name.lower() | trim() }}"
 }
