@@ -42,8 +42,8 @@ docker exec -it <CONTAINER ID> ./manage.py initapp --username=admin --password=m
 ### Configure the webserver
 Execute the script that will install dummy certificates so that ngix can start:
 ```bash
-chmod +x webserver/scripts/init-letsencrypt.sh
-sudo ./webserver/scripts/init-letsencrypt.sh
+chmod +x webserver/scripts/init_letsencrypt.sh
+sudo ./webserver/scripts/init_letsencrypt.sh
 ```
 
 ### Building the container
