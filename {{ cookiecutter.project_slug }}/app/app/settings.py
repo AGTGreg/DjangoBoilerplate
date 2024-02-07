@@ -36,6 +36,12 @@ MIDDLEWARE = [
 ]
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.{{ cookiecutter.domain_name }}',
+    'http://*.127.0.0.1'
+]
+
+
 ROOT_URLCONF = 'app.urls'
 
 
