@@ -24,7 +24,7 @@ class Command(BaseCommand):
         User = get_user_model()
 
         username = options['username'] if options['username'] else 'admin'
-        email = options['email'] if options['email'] else 'admin@example.com'
+        email = options['email'] if options['email'] else '{{ cookiecutter.email_address }}'
         password = options['password'] if options['password'] else 'admin'
         if not User.objects.filter(username=username).exists():
             User.objects.create_superuser(

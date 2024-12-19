@@ -4,5 +4,8 @@
     "description": "{{ cookiecutter.project_name }} is awesome!",
     "author": "Grigoris Chatzinikolaou",
     "domain_name": "example.com",
-    "email_address": "{{ cookiecutter.author.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.domain_name.lower() | trim() }}"
+    "email_address": "{{ cookiecutter.author.lower() | trim() |replace(' ', '-') }}@{{ cookiecutter.domain_name.lower() | trim() }}",
+    "django_secret_key": "{{ random_ascii_string(50, punctuation=False) }}",
+    "db_user": "PostgresUser",
+    "db_password": "{{ random_ascii_string(12, punctuation=False) }}"
 }

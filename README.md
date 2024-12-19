@@ -7,13 +7,13 @@ I hope other people find it useful as well. If you do feel free to contribute.
 
 ## What's incuded?
 -   Django 4.2
--   django-extensions
 -   django-json-widget
 -   django-constance
 -   requests
 -   As services:
     -   Postgres
     -   Redis
+-   NGIX with Let's Encrypt configuration script
 
 ## Initial setup
 ### 1. Create a new project with cookiecutter
@@ -77,3 +77,13 @@ $ docker-compose -f docker-compose.prod.yml up --build
 ## Special thanks
 I would like to thank:
 - [Philipp](https://github.com/wmnnd) For the `init-letsencrypt` script and for his awesome instructions on setting up nginx and certbot.
+
+
+## Changelog:
+### 19-12-24
+- Removed django extensions.
+- Moved copying of project files bellow package and dependency installation in Dockerfile.
+- Add `--fix-missing` in package installation.
+- Add versions to dependencies.
+- Allow devs to set django_secret_key, db_user and db_password on project configuration.
+- Set default email address to the email address specified in the project configuration.

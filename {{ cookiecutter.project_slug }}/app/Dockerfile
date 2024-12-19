@@ -11,9 +11,6 @@ RUN useradd -ms /bin/bash appuser
 RUN mkdir -p ${APP_HOME}
 WORKDIR ${APP_HOME}
 
-# Copy all the project files
-COPY . ${APP_HOME}
-
 # Create the static, media and logs shared volume directories
 RUN mkdir -p /vol/app/media
 RUN mkdir -p /vol/app/static
@@ -26,12 +23,15 @@ RUN chmod -R 755 /vol/app
 
 # Install system packages
 RUN apt-get update \
-    && apt-get -y install libpq-dev gcc
+    && apt-get install -y --fix-missing build-essential libpq-dev gcc
 
 # Install system and pip dependencies.
 COPY ./requirements.txt ${APP_HOME}
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+# Copy all the project files
+COPY . ${APP_HOME}
 
 # Switch to our user
 USER appuser

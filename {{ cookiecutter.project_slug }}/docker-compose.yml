@@ -8,12 +8,11 @@ services:
       - db_volume:/var/lib/postgresql/data/
     env_file:
       - dev.env
-
   redis_pr:
     image: "redis:6-alpine"
     expose:
       - "6379"
-    command: redis-server --appendonly yes
+    command: ["redis-server", "--appendonly", "yes"]
     volumes:
       - redis_pr_data:/data
 

@@ -18,7 +18,6 @@ INSTALLED_APPS = [
 
     'constance.backends.database',
     'constance',
-    'django_extensions',
     'django_json_widget',
 
     'core',
