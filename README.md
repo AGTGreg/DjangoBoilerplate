@@ -6,10 +6,11 @@ So this is a complete dockerized project that is orchestrated by docker-compose 
 I hope other people find it useful as well. If you do feel free to contribute.
 
 ## What's incuded?
--   Django 4.2
+-   Django
 -   django-json-widget
 -   django-constance
 -   requests
+-   django-crispy-forms (Optional)
 -   As services:
     -   Postgres
     -   Redis
@@ -80,6 +81,13 @@ I would like to thank:
 
 
 ## Changelog:
+### 28-08-25
+- Bumped django version to latest LTS vesion (5.2.5).
+- Bumped versions for `django-json-widget` and `redis`.
+- Bumped Redis version for the `redis_pr` image to `8.0-alpine` in the docker-compose files.
+- Removed version from docker-compose files.
+- Added option to include `django-crispy-forms` with Bootstrap5
+
 ### 19-12-24
 - Removed django extensions.
 - Moved copying of project files bellow package and dependency installation in Dockerfile.
