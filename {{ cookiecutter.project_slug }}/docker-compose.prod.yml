@@ -1,9 +1,7 @@
-version: '3.7'
-
 services:
 
   db:
-    image: postgres
+    image: postgres:17.7-alpine
     restart: unless-stopped
     volumes:
       - db_volume:/var/lib/postgresql/data/
@@ -15,7 +13,7 @@ services:
         max-file: "3"
 
   redis_pr:
-    image: "8.0-alpine"
+    image: "redis:8.0-alpine"
     restart: unless-stopped
     expose:
       - "6379"

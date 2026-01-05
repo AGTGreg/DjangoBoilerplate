@@ -81,6 +81,11 @@ I would like to thank:
 
 
 ## Changelog:
+### 05-01-26
+- Set specific version for postgres image: `postgres:17.7-alpine`
+- Fix redis_pr service in docker-compose.prod.yml
+- remove version in docker-compose.prod.yml
+
 ### 28-08-25
 - Bumped django version to latest LTS vesion (5.2.5).
 - Bumped versions for `django-json-widget` and `redis`.
