@@ -75,12 +75,30 @@ Use the `docker-compose.prod.yml` instead and follow the instructions of step "4
 $ docker-compose -f docker-compose.prod.yml up --build
 ```
 
+## Nginx security options
+During project setup, you will be prompted with two optional nginx hardening features. Both default to **no** because they can interfere with legitimate traffic in certain environments.
+
+### Drop HTTP/1.0 requests (`drop_http1_requests`)
+Silently drops connections using the HTTP/1.0 protocol by returning nginx status 444.
+
+**Why opt-in:** Many vulnerability scanners and bots use HTTP/1.0, but so do some load balancers (e.g. AWS ELB), Docker health checks, and uptime monitors. Enabling this in environments that rely on HTTP/1.0 for internal communication can silently break health checks and be difficult to debug.
+
+### Drop no User-Agent requests (`drop_no_useragent_requests`)
+Silently drops connections that have an empty User-Agent header or match known scanner signatures (e.g. PaloAlto, Xpanse).
+
+**Why opt-in:** While empty User-Agent requests are often automated probes, legitimate sources like `curl` (without `-A`), webhooks from third-party services, and internal API clients may also omit the header. The scanner-specific blocks (PaloAlto/Xpanse) may also be unwanted if your organization uses those tools for authorized security assessments.
+
 ## Special thanks
 I would like to thank:
 - [Philipp](https://github.com/wmnnd) For the `init-letsencrypt` script and for his awesome instructions on setting up nginx and certbot.
 
 
 ## Changelog:
+### 16-03-26
+- Added optional nginx hardening: drop HTTP/1.0 requests (`drop_http1_requests`)
+- Added optional nginx hardening: drop empty User-Agent and known scanner requests (`drop_no_useragent_requests`)
+- Added gunicorn and entrypoint.sh for production deployments
+
 ### 05-01-26
 - Set specific version for postgres image: `postgres:17.7-alpine`
 - Fix redis_pr service in docker-compose.prod.yml

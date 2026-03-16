@@ -1,7 +1,7 @@
 services:
 
   db:
-    image: postgres:17.7-alpine
+    image: pgvector/pgvector:pg17
     restart: unless-stopped
     volumes:
       - db_volume:/var/lib/postgresql/data/
@@ -33,11 +33,12 @@ services:
     build:
       context: ./app
     restart: unless-stopped
+    entrypoint: /app/entrypoint.prod.sh
+    command: gunicorn app.wsgi:application --bind 0.0.0.0:8000 --workers 2 --threads 4 --timeout 600 --max-requests 1000 --max-requests-jitter 50 --access-logfile - --error-logfile -
     volumes:
-      - ./app/:/app
       - app_volume:/vol/app
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     env_file:
       - prod.env
     depends_on:

@@ -32,6 +32,7 @@ RUN pip install -r requirements.txt
 
 # Copy all the project files
 COPY . ${APP_HOME}
+RUN chmod +x ${APP_HOME}/entrypoint.prod.sh
 
 # Switch to our user
 USER appuser
