@@ -8,5 +8,7 @@
     "django_secret_key": "{{ random_ascii_string(50, punctuation=False) }}",
     "db_user": "PostgresUser",
     "db_password": "{{ random_ascii_string(12, punctuation=False) }}",
-    "include_crispy_forms_with_bootstrap5": ["y", "n"]
+    "include_crispy_forms_with_bootstrap5": ["y", "n"],
+    "drop_http1_requests": ["n", "y"],
+    "drop_no_useragent_requests": ["n", "y"]
 }
