@@ -94,6 +94,11 @@ I would like to thank:
 
 
 ## Changelog:
+### 16-03-26
+- Added optional nginx hardening: drop HTTP/1.0 requests (`drop_http1_requests`)
+- Added optional nginx hardening: drop empty User-Agent and known scanner requests (`drop_no_useragent_requests`)
+- Added gunicorn and entrypoint.sh for production deployments
+
 ### 05-01-26
 - Set specific version for postgres image: `postgres:17.7-alpine`
 - Fix redis_pr service in docker-compose.prod.yml
